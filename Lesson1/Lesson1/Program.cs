@@ -14,7 +14,7 @@ namespace Lesson1
         static void Main(string[] args)
         {
             Menu.delMenu[] delMenus = new Menu.delMenu[] { Task01,Task02, Task03,
-                Task04, Task05};
+                Task04, Task05, Task06, Task07};
             Menu menu = new Menu(delMenus);
             menu.ChooseMenu();
             //Type type = typeof(FastConsole);
@@ -120,6 +120,41 @@ namespace Lesson1
                     Console.WriteLine("Необходимо ввести число от 1 до 12");
                     break;
             }
+            FC.Pause();
+        }
+        static void Task06()
+        {
+            /*6. Ввести возраст человека (от 1 до 150 лет) 
+             * и вывести его вместе со словом «год», «года» или «лет».*/
+            FC.Input("Введите возраст", out int age);
+            string years;
+            int temp = age % 100;
+            if ((temp > 10 && temp < 15))
+                years = "лет";
+            else
+            {
+                temp = age % 10;
+                if (temp == 1)
+                    years = "год";
+                else if (temp > 1 && temp < 5)
+                    years = "года";
+                else
+                    years = "лет";
+            }
+            Console.WriteLine($"Возраст {age} {years}");
+            FC.Pause();
+        }
+        static void Task07()
+        {
+            /*7. С клавиатуры вводятся числовые координаты двух полей шахматной доски 
+             * (x1, y1, x2, y2).
+             * Требуется определить, относятся ли к поля к одному цвету или нет.*/
+            FC.Input("Введите x1", out int x1);
+            FC.Input("Введите y1", out int y1);
+            FC.Input("Введите x2", out int x2);
+            FC.Input("Введите y2", out int y2);
+            bool flag = (x1 + y1) % 2 == (x2 + y2) % 2;
+            Console.WriteLine("Поля " + (flag ? "" : "не ") + "относятся к одному цвету");
             FC.Pause();
         }
     }
