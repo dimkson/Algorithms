@@ -14,7 +14,7 @@ namespace Lesson1
         static void Main(string[] args)
         {
             Menu.delMenu[] delMenus = new Menu.delMenu[] { Task01,Task02, Task03,
-                Task04, Task05, Task06, Task07};
+                Task04, Task05, Task06, Task07,Task08, Task09};
             Menu menu = new Menu(delMenus);
             menu.ChooseMenu();
             //Type type = typeof(FastConsole);
@@ -155,6 +155,30 @@ namespace Lesson1
             FC.Input("Введите y2", out int y2);
             bool flag = (x1 + y1) % 2 == (x2 + y2) % 2;
             Console.WriteLine("Поля " + (flag ? "" : "не ") + "относятся к одному цвету");
+            FC.Pause();
+        }
+        static void Task08()
+        {
+            //8. Ввести a и b и вывести квадраты и кубы чисел от a до b.
+            FC.Input("Введите a", out int a);
+            FC.Input("Введите b", out int b);
+            for(int i = a; i <= b; i++)
+                Console.WriteLine($"x={i,5} : x^2={i * i,5} : x^3={i * i * i,5}");
+            FC.Pause();
+        }
+        static void Task09()
+        {
+            /*9. Даны целые положительные числа N и K. Используя только операции сложения и вычитания, найти
+             * частное от деления нацело N на K, а также остаток от этого деления.*/
+            FC.Input("Введите первое число", out int N);
+            FC.Input("Введите второе число", out int K);
+            int count = 0;
+            while (N > K)
+            {
+                N -= K;
+                count++;
+            }
+            Console.WriteLine($"N делить на K: частное - {count}, остаток - {N}");
             FC.Pause();
         }
     }
