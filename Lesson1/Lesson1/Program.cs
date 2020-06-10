@@ -233,7 +233,8 @@ namespace Lesson1
             /*14. * Автоморфные числа. Натуральное число называется автоморфным, если оно равно последним
              * цифрам своего квадрата. Например, 25^2 = 625. Напишите программу, которая получает на
              * вход натуральное число N и выводит на экран все автоморфные числа, не превосходящие N.*/
-            int temp, square, count, ost;
+            int temp, count;
+            double square, ost;
             FC.Input("Введите число", out int N);
             Console.WriteLine("Автоморфные числа: ");
             for(int i = 1; i <= N; i++)
@@ -245,8 +246,7 @@ namespace Lesson1
                     count *= 10;
                     temp /= 10;
                 }
-                square = i * i;
-                
+                square = Math.Pow(i, 2);
                 ost = square % count;
                 if (i == ost)
                     Console.Write(i + " ");
