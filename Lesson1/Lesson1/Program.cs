@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-using MenuLib;
+﻿using MenuLib;
+using System;
 using FC = MenuLib.FastConsole;
 
 namespace Lesson1
@@ -13,18 +8,10 @@ namespace Lesson1
     {
         static void Main(string[] args)
         {
-            Menu.delMenu[] delMenus = new Menu.delMenu[] { Task01,Task02, Task03,
-                Task04, Task05, Task06, Task07,Task08, Task09};
+            Menu.delMenu[] delMenus = new Menu.delMenu[] { Task01, Task02, Task03,
+                Task04, Task05, Task06, Task07, Task08, Task09, Task10, Task11, Task12, Task13, Task14};
             Menu menu = new Menu(delMenus);
             menu.ChooseMenu();
-            //Type type = typeof(FastConsole);
-            //MethodInfo[] methodInfos = type.GetMethods();
-            //foreach(var v in methodInfos)
-            //{
-            //    Console.WriteLine(v.Name);
-            //}
-            //FC.Pause();
-
         }
 
         static void Task01()
@@ -78,7 +65,7 @@ namespace Lesson1
                 res2 = (-b - Math.Sqrt(D)) / (2 * a);
                 Console.WriteLine($"Корни уравнения x1={res1}, x2={res2}");
             }
-            else if(D==0)
+            else if (D == 0)
             {
                 res1 = -b / 2 * a;
                 Console.WriteLine($"Корень уравнения x={res1}");
@@ -162,7 +149,7 @@ namespace Lesson1
             //8. Ввести a и b и вывести квадраты и кубы чисел от a до b.
             FC.Input("Введите a", out int a);
             FC.Input("Введите b", out int b);
-            for(int i = a; i <= b; i++)
+            for (int i = a; i <= b; i++)
                 Console.WriteLine($"x={i,5} : x^2={i * i,5} : x^3={i * i * i,5}");
             FC.Pause();
         }
@@ -178,9 +165,93 @@ namespace Lesson1
                 N -= K;
                 count++;
             }
-            Console.WriteLine($"N делить на K: частное - {count}, остаток - {N}");
+            Console.WriteLine($"N делить на K:\nЧастное - {count}\nОстаток - {N}");
+            FC.Pause();
+        }
+        static void Task10()
+        {
+            /*10. Дано целое число N > 0. С помощью операций деления нацело и взятия остатка от деления
+             * определить, имеются ли в записи числа N нечётные цифры. Если имеются, то вывести True, если нет 
+             * – вывести False.*/
+            FC.Input("Введите число", out int N);
+            bool flag = false;
+            while (N > 0)
+            {
+                if ((N % 10) % 2 == 0)
+                {
+                    flag = true;
+                    break;
+                }
+                N /= 10;
+            }
+            Console.WriteLine(flag.ToString());
+            FC.Pause();
+        }
+        static void Task11()
+        {
+            /*11. С клавиатуры вводятся числа, пока не будет введён 0. Подсчитать среднее арифметическое всех
+             * положительных чётных чисел, оканчивающихся на 8.*/
+            int num, count = 0, sum = 0;
+            do
+            {
+                FC.Input("Введите число или 0 для выхода", out num);
+                if (num > 0 && num % 10 == 8)
+                {
+                    sum += num;
+                    count++;
+                }
+            } while (num != 0);
+            if (count > 0)
+                Console.WriteLine($"Среднее арифметическое положительных чисел оканчивающихся на 8: {sum / count:D}");
+            else
+                Console.WriteLine($"Нет чисел, удовлетворяющих условию");
+            FC.Pause();
+        }
+        static void Task12()
+        {
+            //12. Написать функцию нахождения максимального из трёх чисел.
+            FC.Input("Введите первое число", out int max);
+            FC.Input("Введите второе число", out int b);
+            FC.Input("Введите третье число", out int c);
+            if (max < b) max = b;
+            if (max < c) max = c;
+            Console.WriteLine($"Максимальное число {max}");
+            FC.Pause();
+        }
+        static void Task13()
+        {
+            /*13. * Написать функцию, генерирующую случайное число от 1 до 100:
+             * a. С использованием стандартной функции rand().
+             * b. Без использования стандартной функции rand().*/
+            Random random = new Random();
+            Console.WriteLine($"Стандартная функция Random: {random.Next(1, 100)}");           
+            Console.WriteLine($"Нестандартный Random: {(10 * DateTime.Now.Second + 50) % 100}");
+            FC.Pause();
+        }
+        static void Task14()
+        {
+            /*14. * Автоморфные числа. Натуральное число называется автоморфным, если оно равно последним
+             * цифрам своего квадрата. Например, 25^2 = 625. Напишите программу, которая получает на
+             * вход натуральное число N и выводит на экран все автоморфные числа, не превосходящие N.*/
+            int temp, square, count, ost;
+            FC.Input("Введите число", out int N);
+            Console.WriteLine("Автоморфные числа: ");
+            for(int i = 1; i <= N; i++)
+            {
+                count = 1;
+                temp = i;
+                while (temp > 0)
+                {
+                    count *= 10;
+                    temp /= 10;
+                }
+                square = i * i;
+                
+                ost = square % count;
+                if (i == ost)
+                    Console.Write(i + " ");
+            }
             FC.Pause();
         }
     }
-
 }
