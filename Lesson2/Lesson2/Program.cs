@@ -13,8 +13,9 @@ namespace Lesson2
     {
         static void Main(string[] args)
         {
-            Task01.Convert();
-            Task02.Pow();
+            //Task01.Convert();
+            //Task02.Pow();
+            Task03.Calc();
         }
 
     }
