@@ -1,9 +1,4 @@
-﻿using MenuLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using FC = MenuLib.FastConsole;
 
 namespace Lesson2
@@ -24,6 +19,7 @@ namespace Lesson2
             FC.Input("Введите b", out int b);
             CalcRec(a, b);
             Console.WriteLine($"Кол-во вариантов: {counter}, общее количество запусков функции {k}");
+            CalcNoRec(a, b);
             FC.Pause();
         }
         static int counter = 0;
@@ -43,6 +39,17 @@ namespace Lesson2
             }
             else
                 if (a == b) counter++;
+        }
+        static void CalcNoRec(int a, int b)
+        {
+            int[] arr = new int[b + 1];
+            arr[b]++;
+            for(int i = b; i > a; i--)
+            {
+                if (i % 2 == 0) arr[i / 2] += arr[i];
+                arr[i - 1] += arr[i];
+            }
+            Console.WriteLine($"Кол-во вариантов: {arr[a]}");
         }
     }
 }
