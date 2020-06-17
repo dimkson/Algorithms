@@ -29,13 +29,8 @@ namespace Lesson2
             k++;
             if (b > a)
             {
-                if (b % 2 == 0)
-                {
-                    CalcRec(a, b - 1);
-                    CalcRec(a, b / 2);
-                }
-                else
-                    CalcRec(a, b - 1);
+                if (b % 2 == 0) CalcRec(a, b / 2);
+                CalcRec(a, b - 1);
             }
             else
                 if (a == b) counter++;
