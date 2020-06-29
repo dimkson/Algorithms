@@ -22,7 +22,7 @@ namespace Lesson3
                 count++;
                 position = (right - left) / 2 + left;
             }
-            Console.WriteLine("\nКоличество итераций: " + count);
+            Console.WriteLine("\nКоличество операций: " + count);
             if (arr[position] == target) return position;
             else return -1;
         }

@@ -12,7 +12,7 @@ namespace Lesson3
     {
         static void Main(string[] args)
         {
-            Menu.delMenu[] delMenu = { Bubble, Shaker, Binary };
+            Menu.delMenu[] delMenu = { Bubble, Shaker, Binary, SortCompare };
             Menu menu = new Menu(delMenu);
             menu.ChooseMenu();
         }
@@ -58,6 +58,27 @@ namespace Lesson3
             FC.Input("Введите искомое значение", out int target);
             Console.WriteLine("Результат: " + BinarySearchClass.BinarySearch(array, target));
             FC.Pause();
+        }
+        static void SortCompare()
+        {
+            //Сравнение эффективности сортировок
+            FC.Input("Введите размер массива", out int num);
+            int[] array = new int[num];
+            Random rnd = new Random();
+            for (int i = 0; i < array.Length; i++)
+                array[i] = rnd.Next(1, 100);
+            Console.WriteLine("Сортировка пузырьком");
+            Console.WriteLine("\nКоличество операций: " +
+                BubbleSort.BubbleSortSimple(array));
+            Console.ReadLine();
+            Console.WriteLine("Оптимизированная сортировка пузырьком");
+            Console.WriteLine("\nКоличество операций: " +
+                BubbleSort.BubbleSortOptimized(array));
+            Console.ReadLine();
+            Console.WriteLine("Шейкурная сортировка");
+            Console.WriteLine("\nКоличество операций: " +
+                CocktailShakerSort.ShakerSort(array));
+            Console.ReadLine();     
         }
     }
 }
