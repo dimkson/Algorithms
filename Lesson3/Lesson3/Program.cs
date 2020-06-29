@@ -12,7 +12,7 @@ namespace Lesson3
     {
         static void Main(string[] args)
         {
-            Menu.delMenu[] delMenu = { Bubble, Shaker };
+            Menu.delMenu[] delMenu = { Bubble, Shaker, Binary };
             Menu menu = new Menu(delMenu);
             menu.ChooseMenu();
         }
@@ -45,6 +45,19 @@ namespace Lesson3
             Console.WriteLine("\nКоличество операций: " +
                 CocktailShakerSort.ShakerSort(array));
             Console.ReadLine();     
+        }
+        static void Binary()
+        {
+            //Бинарный поиск
+            FC.Input("Введите размер массива", out int num);
+            int[] array = new int[num];
+            Random rnd = new Random();
+            for (int i = 0; i < array.Length; i++)
+                array[i] = rnd.Next(1, 100);
+            Array.Sort(array);
+            FC.Input("Введите искомое значение", out int target);
+            Console.WriteLine("Результат: " + BinarySearchClass.BinarySearch(array, target));
+            FC.Pause();
         }
     }
 }

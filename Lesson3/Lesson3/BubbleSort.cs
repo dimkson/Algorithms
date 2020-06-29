@@ -7,7 +7,6 @@ namespace Lesson3
         public static int BubbleSortSimple(int[] array)
         {
             //Сортировка пузырьком без оптимизации
-            //int[] arr = { 1, 6, 3, 4, 5, 6, 7, 8, 9 };
             int[] arr = new int[array.Length];
             array.CopyTo(arr, 0);
             Console.WriteLine("Массив до сортировки:");
@@ -35,14 +34,13 @@ namespace Lesson3
 
         public static int BubbleSortOptimized(int[] array)
         {
-            //int[] arr = { 1, 6, 3, 4, 5, 6, 7, 8, 9 };
             //Сортировка пузырьком, добавлен флаг для выхода если массив отсортирован 
             //запоминается индекс последнего удачного обмена
             int[] arr = new int[array.Length];
             array.CopyTo(arr, 0);
             Console.WriteLine("Массив до сортировки:");
             foreach (int n in arr) Console.Write(n + " ");
-            int count = 0, right = arr.Length - 1, temp=0;
+            int count = 0, right = arr.Length - 1, temp = 0;
             bool flag = true;
             DateTime start = DateTime.Now;
             for (int i = 0; i < arr.Length - 1; i++)

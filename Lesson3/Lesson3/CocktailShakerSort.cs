@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lesson3
 {
@@ -10,10 +6,9 @@ namespace Lesson3
     {
         public static int ShakerSort(int[] array)
         {
+            //Шейкерная сортировка
             int[] arr = new int[array.Length];
             array.CopyTo(arr, 0);
-
-            //int[] arr = { 2, 5, 4, 6, 4, 9 };
             Console.WriteLine("Массив до сортировки:");
             foreach (int n in arr) Console.Write(n + " ");
             int count = 0,
