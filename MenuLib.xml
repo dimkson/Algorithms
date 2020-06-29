@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MenuLib</name>
+    </assembly>
+    <members>
+        <member name="T:MenuLib.Menu">
+            <summary>
+            Класс Menu конструирует консольное меню на основе переданного ему массива делегатов.
+            </summary>
+        </member>
+        <member name="T:MenuLib.Menu.delMenu">
+            <summary>
+            Делегат delMenu.
+            </summary>
+        </member>
+        <member name="M:MenuLib.Menu.#ctor(MenuLib.Menu.delMenu[])">
+            <summary>
+            Конструктор в качестве параметра принимает массив делегатов delMenu.
+            </summary>
+            <param name="delegates">Массив делегатов delMenu.</param>
+        </member>
+        <member name="M:MenuLib.Menu.ChooseMenu">
+            <summary>
+            Метод создает консольное меню и ожидает ввода номера задания, после чего запускает выбранный метод.
+            </summary>
+        </member>
+        <member name="T:MenuLib.FastConsole">
+            <summary>
+            Класс содержит методы для ускорения работы с консолью.
+            </summary>
+        </member>
+        <member name="M:MenuLib.FastConsole.Input(System.String,System.Int32@)">
+            <summary>
+            Метод выводит строку и ожидает ввода целого числа, при вводе осуществляется проверка на корректность введенных данных.
+            </summary>
+            <param name="str">Выводимая строка.</param>
+            <param name="num">Возвращаемое целое число.</param>
+        </member>
+        <member name="M:MenuLib.FastConsole.Input(System.String,System.Double@)">
+            <summary>
+            Метод выводит строку и ожидает ввода вещественного числа, при вводе осуществляется проверка на корректность 
+            введенных данных.
+            </summary>
+            <param name="str">Выводимая строка.</param>
+            <param name="num">Возвращаемое вещественное число.</param>
+        </member>
+        <member name="M:MenuLib.FastConsole.Input(System.String)">
+            <summary>
+            Метод выводит строку и ожидает ввода новой строки.
+            </summary>
+            <param name="str">Выводимая строка.</param>
+            <returns>Метод возвращает введенную строку.</returns>
+        </member>
+        <member name="M:MenuLib.FastConsole.Pause">
+            <summary>
+            Метод ожидает нажатия клавиши Enter от пользователя.
+            </summary>
+        </member>
+        <member name="M:MenuLib.FastConsole.Print(System.String,System.Int32,System.Int32)">
+            <summary>
+            Метод очищает консоль и выводит строку в заданные координаты консоли.
+            </summary>
+            <param name="str">Выводимая строка.</param>
+            <param name="x">Координата X.</param>
+            <param name="y">Координата Y.</param>
+        </member>
+    </members>
+</doc>
