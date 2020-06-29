@@ -8,14 +8,11 @@ namespace Lesson3
 {
     class CocktailShakerSort
     {
-        public static int ShakerSort()
+        public static int ShakerSort(int[] array)
         {
-            int[] arr = new int[500];
-            Random rnd = new Random();
-            for (int i = 0; i < arr.Length; i++)
-            {
-                arr[i] = rnd.Next(1, 100);
-            }
+            int[] arr = new int[array.Length];
+            array.CopyTo(arr, 0);
+
             //int[] arr = { 2, 5, 4, 6, 4, 9 };
             Console.WriteLine("Массив до сортировки:");
             foreach (int n in arr) Console.Write(n + " ");

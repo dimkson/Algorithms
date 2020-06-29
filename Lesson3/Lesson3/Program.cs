@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MenuLib;
+using FC = MenuLib.FastConsole;
 
 namespace Lesson3
 {
@@ -10,16 +12,39 @@ namespace Lesson3
     {
         static void Main(string[] args)
         {
-            BubbleSort bubbleSort = new BubbleSort(500);
+            Menu.delMenu[] delMenu = { Bubble, Shaker };
+            Menu menu = new Menu(delMenu);
+            menu.ChooseMenu();
+        }
+        static void Bubble()
+        {
+            //Сортировка пузырьком и оптимизированная сортировка пузырьком
+            FC.Input("Введите размер массива", out int num);
+            int[] array = new int[num];
+            Random rnd = new Random();
+            for (int i = 0; i < array.Length; i++)
+                array[i] = rnd.Next(1, 100);
+            //BubbleSort bubbleSort = new BubbleSort(num);
+            Console.WriteLine("Сортировка пузырьком");
             Console.WriteLine("\nКоличество операций: " +
-                bubbleSort.BubbleSortSimple());
+                BubbleSort.BubbleSortSimple(array));
             Console.ReadLine();
+            Console.WriteLine("Оптимизированная сортировка пузырьком");
             Console.WriteLine("\nКоличество операций: " +
-                bubbleSort.BubbleSortOptimized());
-            Console.ReadLine();
+                BubbleSort.BubbleSortOptimized(array));
+            FC.Pause();
+        }
+        static void Shaker()
+        {
+            //Шейкерная сортировка
+            FC.Input("Введите размер массива", out int num);
+            int[] array = new int[num];
+            Random rnd = new Random();
+            for (int i = 0; i < array.Length; i++)
+                array[i] = rnd.Next(1, 100);
             Console.WriteLine("\nКоличество операций: " +
-                CocktailShakerSort.ShakerSort());
-            Console.ReadLine();
+                CocktailShakerSort.ShakerSort(array));
+            Console.ReadLine();     
         }
     }
 }

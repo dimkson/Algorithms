@@ -4,19 +4,7 @@ namespace Lesson3
 {
     class BubbleSort
     {
-        private int[] array;
-
-        public BubbleSort(int length)
-        {
-            array = new int[length];
-            Random rnd = new Random();
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = rnd.Next(1, 100);
-            }
-        }
-
-        public int BubbleSortSimple()
+        public static int BubbleSortSimple(int[] array)
         {
             //Сортировка пузырьком без оптимизации
             //int[] arr = { 1, 6, 3, 4, 5, 6, 7, 8, 9 };
@@ -45,7 +33,7 @@ namespace Lesson3
             return count;
         }
 
-        public int BubbleSortOptimized()
+        public static int BubbleSortOptimized(int[] array)
         {
             //int[] arr = { 1, 6, 3, 4, 5, 6, 7, 8, 9 };
             //Сортировка пузырьком, добавлен флаг для выхода если массив отсортирован 
@@ -80,7 +68,7 @@ namespace Lesson3
             foreach (int n in arr) Console.Write(n + " ");
             return count;
         }
-            private void Swap(ref int i, ref int j)
+            private static void Swap(ref int i, ref int j)
             {
                 i = i + j;
                 j = i - j;
