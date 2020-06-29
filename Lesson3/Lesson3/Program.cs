@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MenuLib;
+﻿using MenuLib;
+using System;
 using FC = MenuLib.FastConsole;
 
 namespace Lesson3
@@ -12,7 +8,7 @@ namespace Lesson3
     {
         static void Main(string[] args)
         {
-            Menu.delMenu[] delMenu = { Bubble, Shaker, Binary, SortCompare };
+            Menu.delMenu[] delMenu = { Bubble, Shaker, Binary, Selection, SortCompare };
             Menu menu = new Menu(delMenu);
             menu.ChooseMenu();
         }
@@ -59,6 +55,19 @@ namespace Lesson3
             Console.WriteLine("Результат: " + BinarySearchClass.BinarySearch(array, target));
             FC.Pause();
         }
+        static void Selection()
+        {
+            //Сортировка выбором
+            FC.Input("Введите размер массива", out int num);
+            int[] array = new int[num];
+            Random rnd = new Random();
+            for (int i = 0; i < array.Length; i++)
+                array[i] = rnd.Next(1, 100);
+            Console.WriteLine("\nКоличество операций: " +
+                SelectionSortClass.SelectionSort(array));
+            Console.ReadLine();
+        }
+
         static void SortCompare()
         {
             //Сравнение эффективности сортировок
@@ -78,7 +87,11 @@ namespace Lesson3
             Console.WriteLine("Шейкурная сортировка");
             Console.WriteLine("\nКоличество операций: " +
                 CocktailShakerSort.ShakerSort(array));
-            Console.ReadLine();     
+            Console.ReadLine();
+            Console.WriteLine("Сортировка выбором");
+            Console.WriteLine("\nКоличество операций: " +
+                SelectionSortClass.SelectionSort(array));
+            Console.ReadLine();
         }
     }
 }
