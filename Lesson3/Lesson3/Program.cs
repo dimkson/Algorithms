@@ -1,5 +1,6 @@
 ﻿using MenuLib;
 using System;
+using System.Linq;
 using FC = MenuLib.FastConsole;
 
 namespace Lesson3
@@ -84,7 +85,7 @@ namespace Lesson3
             Console.WriteLine("\nКоличество операций: " +
                 BubbleSort.BubbleSortOptimized(array));
             Console.ReadLine();
-            Console.WriteLine("Шейкурная сортировка");
+            Console.WriteLine("Шейкерная сортировка");
             Console.WriteLine("\nКоличество операций: " +
                 CocktailShakerSort.ShakerSort(array));
             Console.ReadLine();
@@ -92,6 +93,24 @@ namespace Lesson3
             Console.WriteLine("\nКоличество операций: " +
                 SelectionSortClass.SelectionSort(array));
             Console.ReadLine();
+
+            Console.WriteLine("Сортировка LINQ");
+            DateTime start = DateTime.Now;
+            var posNums= array.OrderBy(o=>o);
+            //var posNums = from n in array
+            //              orderby n
+            //              select n;
+            TimeSpan total = DateTime.Now - start;
+            
+            foreach (int i in posNums)
+            {
+                Console.Write(i + " ");
+            }
+            Console.WriteLine("\nВремя работы алгоритма: " + total.TotalMilliseconds);
+            Console.ReadLine();
+
+
+
         }
     }
 }
