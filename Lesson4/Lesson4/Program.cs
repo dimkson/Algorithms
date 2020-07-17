@@ -12,7 +12,7 @@ namespace Lesson4
     {
         static void Main(string[] args)
         {
-            Menu.delMenu[] delMenus = { Routes.Route };
+            Menu.delMenu[] delMenus = { Routes.Route, Sequences.Sequence };
             Menu menu = new Menu(delMenus);
             menu.ChooseMenu();
         }
