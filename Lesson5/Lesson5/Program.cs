@@ -13,7 +13,7 @@ namespace Lesson5
     {
         static void Main(string[] args)
         {
-            Menu.delMenu[] delMenu = { Task01 };
+            Menu.delMenu[] delMenu = { Task01, Task03 };
             Menu menu = new Menu(delMenu);
             menu.ChooseMenu();
         }
@@ -31,6 +31,39 @@ namespace Lesson5
 
             while (stack.Count != 0)
                 Console.Write(stack.Pop());
+            FC.Pause();
+        }
+        static void Task03()
+        {
+            //Написать программу, которая определяет, является ли введённая скобочная последовательность правильной.
+            string str = FC.Input("Введите скобочную последовательность");
+            char temp;
+            Stack<char> stack = new Stack<char>();
+            foreach(char ch in str)
+            {
+                if (ch == '(' || ch == '[' || ch == '{')
+                    stack.Push(ch);
+                else if (ch == ')' || ch == ']' || ch == '}')
+                {
+                    if (stack.Count == 0)
+                    {
+                        Console.WriteLine("Количество открывающихся скобок не равно количеству закрывающихся");
+                        FC.Pause();
+                        return;
+                    }
+                    temp = stack.Pop();
+                    if (ch - temp > 2 || ch - temp < 1)
+                    {
+                        Console.WriteLine("Скобочная последовательность не правильная");
+                        FC.Pause();
+                        return;
+                    }
+                }
+            }
+            if (stack.Count > 0)
+                Console.WriteLine("Количество открывающихся скобок не равно количеству закрывающихся");
+            else
+                Console.WriteLine("Скобочная последовательность правильная!");
             FC.Pause();
         }
     }
