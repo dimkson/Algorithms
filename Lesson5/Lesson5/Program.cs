@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,18 @@ namespace Lesson5
 
         static void Task01()
         {
+            //Реализовать перевод из десятичной в двоичную систему счисления с использованием стека.
+            FC.Input("Введите число", out int num);
+            Stack stack = new Stack();
+            do
+            {
+                stack.Push(num % 2);
+                num /= 2;
+            } while (num != 0);
 
+            while (stack.Count != 0)
+                Console.Write(stack.Pop());
+            FC.Pause();
         }
     }
 }
