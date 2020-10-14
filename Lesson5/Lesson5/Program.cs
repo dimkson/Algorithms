@@ -13,11 +13,12 @@ namespace Lesson5
     {
         static void Main(string[] args)
         {
-            Menu.delMenu[] delMenu = { Task01, Task03 };
+            Menu.delMenu[] delMenu = { Task01, Task03, Task05 };
             Menu menu = new Menu(delMenu);
             menu.ChooseMenu();
         }
 
+        #region Задание 1
         static void Task01()
         {
             //Реализовать перевод из десятичной в двоичную систему счисления с использованием стека.
@@ -33,13 +34,16 @@ namespace Lesson5
                 Console.Write(stack.Pop());
             FC.Pause();
         }
+        #endregion
+
+        #region Задание 3
         static void Task03()
         {
             //Написать программу, которая определяет, является ли введённая скобочная последовательность правильной.
             string str = FC.Input("Введите скобочную последовательность");
             char temp;
             Stack<char> stack = new Stack<char>();
-            foreach(char ch in str)
+            foreach (char ch in str)
             {
                 if (ch == '(' || ch == '[' || ch == '{')
                     stack.Push(ch);
@@ -66,5 +70,76 @@ namespace Lesson5
                 Console.WriteLine("Скобочная последовательность правильная!");
             FC.Pause();
         }
+        #endregion
+
+        #region Задание 5
+        static void Task05()
+        {
+            //Реализовать алгоритм перевода из инфиксной записи арифметического выражения в постфиксную.
+            string str = FC.Input("Введите арифметическое выражение");
+            string outStr = string.Empty;
+            char lastChar = ' ';
+
+            Stack<char> stack = new Stack<char>();
+            foreach (char ch in str)
+            {
+                if (char.IsDigit(ch))
+                {
+                    outStr += ch;
+                }
+                else if (ch == '(')
+                {
+                    stack.Push(ch);
+                    lastChar = '(';
+                }
+                else if (ch == ')')
+                {
+                    char temp;
+                    do
+                    {
+                        temp = stack.Pop();
+                        if (temp != '(')
+                            outStr += temp;
+                    } while (temp != '(');
+                }
+                else
+                {
+                    outStr += ' ';
+                    if (Priority(ch) <= Priority(lastChar))
+                    {
+                        outStr += stack.Pop();
+                        outStr += ' ';
+                    }
+                    stack.Push(ch);
+                    lastChar = ch;
+                }
+            }
+            while (stack.Count != 0)
+            {
+                outStr += stack.Pop();
+                outStr += ' ';
+            }
+            Console.WriteLine(outStr);
+            FC.Pause();
+        } 
+        static int Priority(char ch)
+        {
+            switch (ch)
+            {
+                //case '(':
+                //    return 0;
+                case '+':
+                case '-':
+                    return 1;
+                case '*':
+                case '/':
+                    return 2;
+                case '^':
+                    return 3;
+                default:
+                    return 0;
+            }
+        }
+        #endregion
     }
 }
