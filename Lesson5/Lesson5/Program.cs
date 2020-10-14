@@ -13,7 +13,7 @@ namespace Lesson5
     {
         static void Main(string[] args)
         {
-            Menu.delMenu[] delMenu = { Task01, Task03, Task05 };
+            Menu.delMenu[] delMenu = { Task01, Task03, Task05, Task06 };
             Menu menu = new Menu(delMenu);
             menu.ChooseMenu();
         }
@@ -139,6 +139,28 @@ namespace Lesson5
                 default:
                     return 0;
             }
+        }
+        #endregion
+
+        #region Задание 6
+        static void Task06()
+        {
+            //Реализовать очередь с использованием массива.
+            MyQueue myQueue = new MyQueue(5);
+            for (int i = 0; i < 7; i++)
+            {
+                myQueue.Push(i+1);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                myQueue.Pop();
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                myQueue.Push(i+10);
+            }
+            FC.Pause();
+            
         }
         #endregion
     }
