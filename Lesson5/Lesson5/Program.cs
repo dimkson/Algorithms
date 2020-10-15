@@ -162,5 +162,13 @@ namespace Lesson5
             FC.Pause();
         }
         #endregion
+
+        #region Задание 7
+        static void Task7()
+        {
+            //Реализовать двустороннюю очередь.
+
+        }
+        #endregion
     }
 }
