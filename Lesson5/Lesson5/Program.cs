@@ -146,7 +146,7 @@ namespace Lesson5
         static void Task06()
         {
             //Реализовать очередь с использованием массива.
-            MyQueue myQueue = new MyQueue(5);
+            MyQueue<int> myQueue = new MyQueue<int>(5);
             for (int i = 0; i < 7; i++)
             {
                 myQueue.Enqueue(i+1);

@@ -2,11 +2,11 @@
 
 namespace Lesson5
 {
-    class MyQueue
+    class MyQueue<T>
     {
         #region Поля
 
-        int[] queue;
+        T[] queue;
         int maxSize;
         int head, tail;
         bool reverse;
@@ -18,7 +18,7 @@ namespace Lesson5
         public MyQueue(int maxSize)
         {
             this.maxSize = maxSize;
-            queue = new int[maxSize];
+            queue = new T[maxSize];
             head = tail = 0;
             reverse = false;
         }
@@ -27,7 +27,7 @@ namespace Lesson5
 
         #region Методы
 
-        public void Enqueue(int item)
+        public void Enqueue(T item)
         {
             if (reverse)
             {
@@ -47,20 +47,20 @@ namespace Lesson5
                 reverse = true;
             }
         }
-        public int Dequeue()
+        public T Dequeue()
         {
             if (!reverse)
             {
                 if (head == tail)
                 {
                     Console.WriteLine("Очередь пуста");
-                    return 0;
+                    return default(T);
                 }
             }
 
-            int item;
+            T item;
             item = queue[tail];
-            queue[tail] = 0;
+            queue[tail] = default(T);
             tail++;
 
             if (tail == maxSize)
