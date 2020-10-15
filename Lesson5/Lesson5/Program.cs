@@ -149,18 +149,17 @@ namespace Lesson5
             MyQueue myQueue = new MyQueue(5);
             for (int i = 0; i < 7; i++)
             {
-                myQueue.Push(i+1);
+                myQueue.Enqueue(i+1);
             }
             for (int i = 0; i < 3; i++)
             {
-                myQueue.Pop();
+                myQueue.Dequeue();
             }
             for (int i = 0; i < 5; i++)
             {
-                myQueue.Push(i+10);
+                myQueue.Enqueue(i+10);
             }
             FC.Pause();
-            
         }
         #endregion
     }

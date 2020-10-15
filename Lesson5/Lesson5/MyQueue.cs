@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lesson5
 {
@@ -31,65 +27,34 @@ namespace Lesson5
 
         #region Методы
 
-        public void Push(int item)
+        public void Enqueue(int item)
         {
-            if (head == maxSize)
-            {
-                if(head+1==tail)
-                head = 0;
-            }
-
-
-            if (!reverse)
-            {
-                if (head < maxSize)
-                {
-                    queue[head] = item;
-                    head++;
-                }
-                else
-                {
-                    if (tail != 0)
-                    {
-                        head = 0;
-                        queue[head] = item;
-                        reverse = true;
-                        Console.WriteLine("Head Reverse!"); 
-                    }
-                    else
-                        Console.WriteLine("Очередь переполнена!");
-                }
-            }
-            else
-            {
-                if (head < tail)
-                {
-                    queue[head] = item;
-                    head++;
-                }
-                else
-                {
-                    Console.WriteLine("Очередь переполнена!");
-                }
-            }
-
-
-        }
-        public int Pop()
-        {
-            if (head == tail)
-            {
-                Console.WriteLine("Очередь пуста");
-                return 0;
-            }
-
             if (reverse)
             {
-                if (tail == maxSize)
+                if (head == tail)
                 {
-                    tail = 0;
-                    reverse = false;
-                    Console.WriteLine("Tail Reverse");
+                    Console.WriteLine("Очередь переполнена!");
+                    return;
+                }
+            }
+
+            queue[head] = item;
+            head++;
+
+            if (head == maxSize)
+            {
+                head = 0;
+                reverse = true;
+            }
+        }
+        public int Dequeue()
+        {
+            if (!reverse)
+            {
+                if (head == tail)
+                {
+                    Console.WriteLine("Очередь пуста");
+                    return 0;
                 }
             }
 
@@ -97,6 +62,12 @@ namespace Lesson5
             item = queue[tail];
             queue[tail] = 0;
             tail++;
+
+            if (tail == maxSize)
+            {
+                tail = 0;
+                reverse = false;
+            }
             return item;
         }
 
