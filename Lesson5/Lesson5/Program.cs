@@ -1,10 +1,6 @@
-﻿using System;
+﻿using MenuLib;
+using System;
 using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MenuLib;
 using FC = MenuLib.FastConsole;
 
 namespace Lesson5
@@ -23,7 +19,7 @@ namespace Lesson5
         {
             //Реализовать перевод из десятичной в двоичную систему счисления с использованием стека.
             FC.Input("Введите число", out int num);
-            Stack stack = new Stack();
+            Stack<int> stack = new Stack<int>();
             do
             {
                 stack.Push(num % 2);
@@ -75,7 +71,7 @@ namespace Lesson5
         #region Задание 5
         static void Task05()
         {
-            //Реализовать алгоритм перевода из инфиксной записи арифметического выражения в постфиксную.
+            //Реализовать алгоритм перевода из инфиксной записи арифметического выражения в постфиксную.(Обратную польскую)
             string str = FC.Input("Введите арифметическое выражение");
             string outStr = string.Empty;
             char lastChar = ' ';
@@ -119,6 +115,7 @@ namespace Lesson5
                 outStr += stack.Pop();
                 outStr += ' ';
             }
+            Console.WriteLine("Обратная польская запись:");
             Console.WriteLine(outStr);
             FC.Pause();
         } 
@@ -146,10 +143,11 @@ namespace Lesson5
         static void Task06()
         {
             //Реализовать очередь с использованием массива.
+            //Пример использования созданной очереди
             MyQueue<int> myQueue = new MyQueue<int>(5);
             for (int i = 0; i < 7; i++)
             {
-                myQueue.Enqueue(i+1);
+                myQueue.Enqueue(i + 1);
             }
             for (int i = 0; i < 3; i++)
             {
@@ -157,7 +155,7 @@ namespace Lesson5
             }
             for (int i = 0; i < 5; i++)
             {
-                myQueue.Enqueue(i+10);
+                myQueue.Enqueue(i + 10);
             }
             FC.Pause();
         }

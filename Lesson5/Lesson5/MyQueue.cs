@@ -4,12 +4,13 @@ namespace Lesson5
 {
     class MyQueue<T>
     {
+        //Класс реализует очередь на основе массива
         #region Поля
 
-        T[] queue;
-        int maxSize;
-        int head, tail;
-        bool reverse;
+        private T[] queue;
+        private int maxSize;
+        private int head, tail;
+        private bool reverse;
 
         #endregion
 
@@ -54,13 +55,13 @@ namespace Lesson5
                 if (head == tail)
                 {
                     Console.WriteLine("Очередь пуста");
-                    return default(T);
+                    return default;
                 }
             }
 
             T item;
             item = queue[tail];
-            queue[tail] = default(T);
+            queue[tail] = default;
             tail++;
 
             if (tail == maxSize)
