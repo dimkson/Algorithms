@@ -124,23 +124,23 @@ namespace Lesson7
                 RecurWidth(queue.Dequeue());
         }
 
-        public void Dijkstra()
+        public void Dijkstra(int num)
         {
             //Алгоритм Дейкстры
             queue = new Queue<int>();
             arr = new int[size];
             arrDistance = new int[size];
-            for (int i = 1; i < size; i++)
+            for (int i = 0; i < size; i++)
             {
                 arrDistance[i] = int.MaxValue;
             }
-            RecurDijkstra(0);
+            arrDistance[num] = 0;
+            RecurDijkstra(num);
         }
 
         private void RecurDijkstra(int i)
         {
             int dist = 0;
-            //arr[i] = 1;
             for (int j = 0; j < size; j++)
             {
                 if (arrMatrix[i, j] != 0)
@@ -151,7 +151,6 @@ namespace Lesson7
                         if (dist < arrDistance[j])
                         {
                             queue.Enqueue(j);
-                            //arr[j] = 1;
                             arrDistance[j] = arrDistance[i] + arrMatrix[i, j];
                         }
                     }
@@ -160,6 +159,22 @@ namespace Lesson7
             arr[i] = 1;
             if (queue.Count != 0)
                 RecurDijkstra(queue.Dequeue());
+        }
+
+        public void FindShortPath(int i)
+        {
+            //Поиск кратчайшего пути
+            for (int j = 0; j < size; j++)
+            {
+                if (arrMatrix[i, j] != 0)
+                {
+                    if (arrDistance[i] - arrMatrix[i, j] == arrDistance[j])
+                    {
+                        queue.Enqueue(j);
+                        FindShortPath(j);
+                    }
+                }
+            }
         }
         #endregion
     }
