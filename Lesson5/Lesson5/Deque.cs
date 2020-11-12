@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lesson5
 {
@@ -12,8 +8,7 @@ namespace Lesson5
 
         int[] deque;
         int maxSize;
-        int head, tail;
-        bool reverse;
+        int head, tail, count;
 
         #endregion
 
@@ -23,8 +18,7 @@ namespace Lesson5
         {
             this.maxSize = maxSize;
             deque = new int[maxSize];
-            head = tail = 0;
-            reverse = true;
+            head = tail = count = 0;
         }
         #endregion
 
@@ -32,34 +26,80 @@ namespace Lesson5
 
         public void PushBack(int item)
         {
-
-        }
-        public int PopBack()
-        {
-            return 0;
-        }
-        public void PushFront(int item)
-        {
-            int next = head + 1;
-            if (next == maxSize) next = 0;
-            if (next != tail)
+            if (count == 0)
             {
-                head = next;
-                deque[head] = item;
+                head = tail = 0;
+                deque[tail] = item;
+                count++;
             }
             else
             {
-                Console.WriteLine("Дек заполнен");
+                if (count != maxSize)
+                {
+                    int next = tail - 1;
+                    if (next == -1) next = maxSize - 1;
+                    tail = next;
+                    deque[tail] = item;
+                    count++;
+                }
+                else
+                {
+                    Console.WriteLine("Дек заполнен");
+                }
+            }
+        }
+        public int PopBack()
+        {
+            if (count != 0)
+            {
+                int item = deque[tail];
+                deque[tail] = 0;
+                int prev = tail + 1;
+                if (prev == maxSize) prev = 0;
+                tail = prev;
+                count--;
+                return item;
+            }
+            else
+            {
+                Console.WriteLine("Дек пуст");
+                return 0;
+            }
+        }
+        public void PushFront(int item)
+        {
+            if (count == 0)
+            {
+                head = tail = 0;
+                deque[head] = item;
+                count++;
+            }
+            else
+            {
+                if (count != maxSize)
+                {
+                    int next = head + 1;
+                    if (next == maxSize) next = 0;
+                    head = next;
+                    deque[head] = item;
+                    count++;
+                }
+                else
+                {
+                    Console.WriteLine("Дек заполнен");
+                } 
             }
         }
         public int PopFront()
         {
-            int prev = head - 1;
-            if (prev == -1) prev = maxSize - 1;
-            if (prev != tail)
+            if (count != 0)
             {
-                int item = deque[prev];
+                int item = deque[head];
+                deque[head] = 0;
+                int prev = head - 1;
+                if (prev == -1) prev = maxSize - 1;
                 head = prev;
+                count--;
                 return item;
             }
             else

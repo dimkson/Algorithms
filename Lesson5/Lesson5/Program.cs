@@ -9,7 +9,7 @@ namespace Lesson5
     {
         static void Main(string[] args)
         {
-            Menu.delMenu[] delMenu = { Task01, Task03, Task05, Task06 };
+            Menu.delMenu[] delMenu = { Task01, Task03, Task05, Task06, Task07 };
             Menu menu = new Menu(delMenu);
             menu.ChooseMenu();
         }
@@ -162,10 +162,22 @@ namespace Lesson5
         #endregion
 
         #region Задание 7
-        static void Task7()
+        static void Task07()
         {
             //Реализовать двустороннюю очередь.
-
+            Deque deque = new Deque(10);
+            for (int i = 1; i < 7; i++)
+            {
+                deque.PushFront(i);
+                if (i < 5)
+                    deque.PushBack(i);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                deque.PopFront();
+                deque.PopBack();
+            }
+            FC.Pause();
         }
         #endregion
     }
