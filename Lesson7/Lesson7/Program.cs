@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FC = MenuLib.FastConsole;
 
 namespace Lesson7
@@ -15,6 +11,8 @@ namespace Lesson7
             graphs.PrintMatrix();
             FC.Input("Введите номер стартовой вершины", out int num);
             graphs.Dijkstra(num);
+            FC.Input("Введите номер конечной вершины", out num);
+            graphs.FindShortPath(num);
             Console.ReadLine();
         }
     }

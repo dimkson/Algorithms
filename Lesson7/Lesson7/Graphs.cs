@@ -12,6 +12,7 @@ namespace Lesson7
         private int[] arr;
         private int[] arrDistance;
         private int size;
+        private bool finish;
         private Stack<int> stack;
         private Queue<int> queue;
 
@@ -164,6 +165,20 @@ namespace Lesson7
         public void FindShortPath(int i)
         {
             //Поиск кратчайшего пути
+            queue = new Queue<int>(size);
+            queue.Enqueue(i);
+            RecurShortPath(i);
+            finish = false;
+            Console.WriteLine("Кратчайший путь:");
+            do
+            {
+                Console.Write(queue.Dequeue() + " ");
+            } while (queue.Count != 0);
+        }
+
+        private void RecurShortPath(int i)
+        {
+            //Рекурсивный метод поиска кратчайшего пути
             for (int j = 0; j < size; j++)
             {
                 if (arrMatrix[i, j] != 0)
@@ -171,7 +186,14 @@ namespace Lesson7
                     if (arrDistance[i] - arrMatrix[i, j] == arrDistance[j])
                     {
                         queue.Enqueue(j);
-                        FindShortPath(j);
+                        if (arrDistance[j] == 0)
+                        {
+                            finish = true;
+                            return;
+                        }
+                        RecurShortPath(j);
+                        if (finish)
+                            return;
                     }
                 }
             }
