@@ -22,7 +22,7 @@ namespace Lesson8
             //}
             //Console.WriteLine();
             //Task01(arr);
-            Task02();
+            Task03();
             Console.ReadLine();
         }
         static void Task01(int[] arr)
@@ -99,6 +99,42 @@ namespace Lesson8
             a = a + b;
             b = a - b;
             a = a - b;
+        }
+
+        static void Task03()
+        {
+            int[] arr = new int[10];
+            Random rnd = new Random();
+            for (int i = 0; i < 10; i++)
+            {
+                arr[i] = rnd.Next(0, 100);
+            }
+            foreach (int item in arr)
+            {
+                Console.Write(item + " ");
+            }
+            Console.WriteLine();
+            InsertSort(arr);
+            foreach (int item in arr)
+            {
+                Console.Write(item + " ");
+            }
+            //Console.ReadLine();
+        }
+        static void InsertSort(int[] arr)
+        {
+            int j, key;
+            for (int i = 1; i < arr.Length; i++)
+            {
+                j = i;
+                key = arr[i];
+                while (j > 0 && arr[j - 1] > key)
+                {
+                    arr[j] = arr[j - 1];
+                    j--;
+                }
+                arr[j] = key;
+            }
         }
     }
 }
